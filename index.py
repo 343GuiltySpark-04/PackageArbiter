@@ -1,8 +1,9 @@
 import yaml
 
 
-def load_database():
+def load_database(test):
     with open(r'/home/tristan/Documents/pkgdata.yaml') as file:
         pkg_list = yaml.load(file, Loader=yaml.FullLoader)
 
-        print(pkg_list)
+        if test == 1:
+            print(pkg_list)
