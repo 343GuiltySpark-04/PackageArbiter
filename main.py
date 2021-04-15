@@ -1,22 +1,60 @@
-from internal_test import run_all_internal_tests
+from os import system
+
+import confuse
+from termcolor import cprint
+
+from bash_scripts import run_initial_config_creation, create_db_dir
 from mainmenu import main_menu
 
 
-def ask_if_run_tests():
-    print("Run Internal Tests? \n Yes 1 \n No 0")
+def clear():
+    system('clear')
+
+
+def first_run():
+    cprint("PERFORMING FIRST TIME HOSTAGE TASKS....", 'cyan')
+
+    run_initial_config_creation()
+
+    create_db_dir()
+
+    clear()
+
+    start_menu()
+
+
+## ask if its the first time running
+
+def ask_if_first_run():
+    print("First Run? \n 1) Yes. \n 2) No.")
 
     user_input = int(input())
 
     if user_input == 1:
-        run_all_internal_tests()
-    elif user_input == 0:
+        first_run()
+    elif user_input == 2:
         start_menu()
-    elif user_input != 0 or user_input != 1:
-        start_menu()
+    elif user_input != 1 or user_input != 2:
+        ask_if_first_run()
+
+
+def load_config():
+    config = confuse.Configuration('PackageArbiter', __name__)
+
+    config.set_file("/etc/packageArbiter/config.yaml")
 
 
 def start_menu():
     main_menu()
 
 
-ask_if_run_tests()
+## a try statement so it doesn't exit if you mistype
+def ask_if_first_handler():
+    try:
+        ask_if_first_run()
+    except ValueError:
+        cprint("YOU HAVE TO ENTER A NUMBER YOU DOLT!", 'red', attrs=['underline'])
+        ask_if_first_handler()
+
+
+ask_if_first_handler()
