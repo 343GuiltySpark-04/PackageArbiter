@@ -1,10 +1,9 @@
 from os import system
 
-import confuse
 from termcolor import cprint
 
 from bash_scripts import run_initial_config_creation, create_db_dir
-from mainmenu import main_menu
+from mainmenu import main_menu_handler
 
 
 def clear():
@@ -38,14 +37,8 @@ def ask_if_first_run():
         ask_if_first_run()
 
 
-def load_config():
-    config = confuse.Configuration('PackageArbiter', __name__)
-
-    config.set_file("/etc/packageArbiter/config.yaml")
-
-
 def start_menu():
-    main_menu()
+    main_menu_handler()
 
 
 ## a try statement so it doesn't exit if you mistype
