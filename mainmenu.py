@@ -26,6 +26,7 @@ def main_menu():
         dev_tests_menu_handler()
     elif user_input == 0:
         cprint("Goodbye!", 'cyan')
+        exit()
     elif user_input != 0 or user_input != 1 or user_input != 2:
         main_menu_handler()
 

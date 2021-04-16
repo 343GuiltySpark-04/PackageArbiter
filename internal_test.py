@@ -27,9 +27,9 @@ def dev_tests_menu():
     user_input = int(input("#>"))
 
     if user_input == 1:
-        run_database_load_test(1)
-    elif user_input == 2:
         config_editor_menu_handler()
+    elif user_input == 2:
+        run_database_load_test(1)
     elif user_input != 1 or user_input != 2:
         clear()
         dev_tests_menu_handler()

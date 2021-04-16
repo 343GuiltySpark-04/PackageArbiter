@@ -27,7 +27,9 @@ def first_run():
 def ask_if_first_run():
     print("First Run? \n 1) Yes. \n 2) No.")
 
-    user_input = int(input())
+    # user_input = int(input())
+
+    user_input = 2
 
     if user_input == 1:
         first_run()
