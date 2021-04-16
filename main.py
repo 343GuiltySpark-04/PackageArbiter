@@ -1,9 +1,17 @@
-from os import system
+from os import system, name
 
 from termcolor import cprint
 
 from bash_scripts import run_initial_config_creation, create_db_dir
 from mainmenu import main_menu_handler
+
+
+## Because sometimes people are fucking idiots
+
+def check_if_posix():
+    if name != 'posix':
+        cprint("WHY THE FUCK ARE YOU RUNNING THIS ON A NON POSIX SYSTEM?", 'red', attrs=['underline', 'bold'])
+        exit("UNABLE TO FREE HOSTAGES REASON: NON-POSIX SYSTEM DETECTED!")
 
 
 def clear():
@@ -40,6 +48,7 @@ def ask_if_first_run():
 
 
 def start_menu():
+    clear()
     main_menu_handler()
 
 
@@ -52,4 +61,5 @@ def ask_if_first_handler():
         ask_if_first_handler()
 
 
+check_if_posix()
 ask_if_first_handler()
