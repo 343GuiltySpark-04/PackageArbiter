@@ -61,6 +61,8 @@ def parser(package_name, return_bit):
         else:
             continue
 
+    stream.close()
+
     if return_bit == 1:
         return key_data_name
     elif return_bit == 2:
