@@ -19,6 +19,7 @@ def clear():
 
 
 def start_menu():
+    """Light this candle"""
     clear()
     main_menu_handler()
 

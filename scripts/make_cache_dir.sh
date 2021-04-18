@@ -7,4 +7,6 @@ sudo mkdir -p $cache_dir
 # shellcheck disable=SC2164
 cd $cache_dir
 
-sudo chown -r root:wheel ../cache
+sudo chown -R root:wheel ../cache
+
+sudo chmod -R g+w ../cache

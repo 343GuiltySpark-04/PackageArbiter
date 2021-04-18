@@ -5,7 +5,7 @@ from termcolor import cprint
 
 setup(
     name='PackageArbiter',
-    version='0.0.1',
+    version='0.0.2',
     packages=['database_parser'],
     url='https://github.com/343GuiltySpark-04/PackageArbiter',
     license='GPL 2',

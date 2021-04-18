@@ -2,6 +2,7 @@ from os import system
 
 from termcolor import cprint
 
+from cache_parser import parser_cache
 from database_parser import parser
 from internal_test import dev_tests_menu_handler
 
@@ -11,20 +12,37 @@ def clear():
 
 
 def package_search():
+    """Searches for a package in the db.yaml file then checks for its presence in the Cache
+        Directory"""
+
     cprint("So who are we looking for?", 'cyan')
 
     user_input = input("#>")
 
-    exists = parser(user_input, 1)
+    exists_in_db = parser(user_input, 1)
 
-    if exists == user_input:
+    exists_in_cache = parser_cache(user_input, 2)
+
+    if exists_in_db == user_input:
         clear()
-        parser(user_input, 4)
-        print("\n")
+        out_name = "Name: " + parser(user_input, 1)
+        out_version = "Version: " + str(parser(user_input, 2))
+        out_config_dir = "Config Dir: " + parser(user_input, 3)
+        cprint(out_name, 'yellow')
+        cprint(out_version, 'yellow')
+        cprint(out_config_dir, 'yellow')
+    elif exists_in_db != user_input:
+        clear()
+        cprint("Sorry Hostage Rescue Failed (Package Not Found in Database)", 'red', attrs=['underline'])
         main_menu_handler()
-    elif exists != user_input:
-        clear()
-        cprint("Sorry Hostage Rescue Failed (Package Not Found)", 'red', attrs=['underline'])
+
+    cprint("Making Sure It's Present in The Cache....", 'cyan')
+
+    if exists_in_cache == 1:
+        cprint("Hostage (Package) Located!", 'yellow')
+        main_menu_handler()
+    elif exists_in_cache != 2:
+        cprint("Sorry Hostage Rescue Failed (Package Not Found in Cache)", 'red', attrs=['underline'])
         main_menu_handler()
 
 
@@ -53,6 +71,8 @@ def main_menu():
 
 
 def main_menu_handler():
+    """Handles Any Exceptions From incorrect characters"""
+
     try:
         main_menu()
     except ValueError:
