@@ -11,8 +11,8 @@ def clear():
 
 
 def package_search():
-    """Searches for a package in the db.yaml file then checks for its presence in the Cache
-        Directory"""
+    """Searches for a package in the db.yaml (using database_parser.py file then checks for its presence in the Cache
+        Directory (using cache_parser.py)"""
 
     cprint("So who are we looking for?", 'cyan')
 
@@ -46,7 +46,7 @@ def package_search():
 
 
 def main_menu():
-    """Main Menu"""
+    """Main Menu (self explanatory)"""
     cprint("Welcome to PackageArbiter, Please Select an Operation.", 'blue')
     cprint("1) Hostage (Package) Search.", 'yellow')
     cprint("0) Exit.", 'red')

@@ -3,6 +3,8 @@ from os import system
 import yaml
 from termcolor import cprint
 
+"""sets the default Database Path"""
+
 db_file_path = '/usr/local/packageArbiter/db/db.yaml'
 
 
@@ -11,6 +13,8 @@ def clear():
 
 
 def parser(package_name, return_bit):
+    """Parses The db.yaml File"""
+
     key_data_name = ""
     key_data_version = 0.0
     key_data_config_dir = ""
@@ -18,7 +22,7 @@ def parser(package_name, return_bit):
     count = 0
 
     path = ""
-
+    """A switch so it doesn't use the default path for unit tests"""
     if return_bit != 5:
         path = db_file_path
     elif return_bit == 5:

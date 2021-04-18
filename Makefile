@@ -5,3 +5,6 @@ package-arbiter:
 make doxygen:
 		doxygen ./docs/Doxyfile
 
+make test:
+		python3 -m unittests ./tests/unit_tests.py
+
