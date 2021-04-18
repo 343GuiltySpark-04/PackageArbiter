@@ -2,7 +2,6 @@ from os import system
 
 from termcolor import cprint
 
-from config_editor import config_editor_menu_handler
 from index import load_database
 
 
@@ -16,18 +15,15 @@ def run_database_load_test(flip_bit):
     load_database(flip_bit)
 
 
-def run_config_editor_test_mode():
-    config_editor_menu_handler()
-
-
 def dev_tests_menu():
     cprint("Please Select A Test To Run.", 'blue')
-    cprint("1) Configuration Editor Test. \n2) Database Loading Test.", 'yellow')
+    cprint("1) Configuration Editor Test. (DEFUNCT!) \n2) Database Loading Test.", 'yellow')
 
     user_input = int(input("#>"))
 
     if user_input == 1:
-        config_editor_menu_handler()
+        clear()
+        cprint("I SAID DEFUNCT YOU DOLT!", 'red', attrs=['underline'])
     elif user_input == 2:
         run_database_load_test(1)
     elif user_input != 1 or user_input != 2:
