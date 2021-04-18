@@ -10,19 +10,6 @@ def clear():
     system('clear')
 
 
-def test_db_loading(dev_test_bit):
-    """Tests To Make Sure Its Formatted Right (primitive until pyYAML adds a 3.9 compatible way to use try statements)"""
-    stream = open(db_file_path)
-
-    data = yaml.load(stream, Loader=yaml.FullLoader)
-
-    if dev_test_bit == 1:
-        return cprint(data, 'yellow')
-    elif dev_test_bit == 2:
-        for items in data:
-            print(items)
-
-
 def parser(package_name, return_bit):
     key_data_name = ""
     key_data_version = 0.0
@@ -30,7 +17,14 @@ def parser(package_name, return_bit):
 
     count = 0
 
-    stream = open(db_file_path)
+    path = ""
+
+    if return_bit != 5:
+        path = db_file_path
+    elif return_bit == 5:
+        path = '../tests/test.yaml'
+
+    stream = open(path)
     data = yaml.load(stream, Loader=yaml.FullLoader)
 
     count_max = len(data)
@@ -61,7 +55,9 @@ def parser(package_name, return_bit):
         else:
             continue
 
-    if return_bit == 1:
+    stream.close()
+
+    if return_bit == 1 or return_bit == 5:
         return key_data_name
     elif return_bit == 2:
         return key_data_version

@@ -4,7 +4,6 @@ from termcolor import cprint
 
 from cache_parser import parser_cache
 from database_parser import parser
-from internal_test import dev_tests_menu_handler
 
 
 def clear():
@@ -49,23 +48,19 @@ def package_search():
 def main_menu():
     """Main Menu"""
     cprint("Welcome to PackageArbiter, Please Select an Operation.", 'blue')
-    cprint("1) Dev Tests Menu.", 'yellow')
-    cprint("2) Hostage (Package) Search.", 'yellow')
+    cprint("1) Hostage (Package) Search.", 'yellow')
     cprint("0) Exit.", 'red')
 
     user_input = int(input("#>"))
 
     if user_input == 1:
         clear()
-        dev_tests_menu_handler()
-    elif user_input == 2:
-        clear()
         package_search()
     elif user_input == 0:
         clear()
         cprint("Goodbye!", 'cyan')
         exit()
-    elif user_input > 2:
+    elif user_input > 1:
         main_menu_handler()
 
 

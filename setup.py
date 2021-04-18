@@ -6,12 +6,12 @@ from termcolor import cprint
 setup(
     name='PackageArbiter',
     version='0.0.2',
-    packages=['database_parser'],
+    packages=['tests'],
     url='https://github.com/343GuiltySpark-04/PackageArbiter',
     license='GPL 2',
     author='Tristan Adams',
     author_email='killerdragonxs@gmail.com',
-    description='a package manager for VadamOS'
+    description='A Package Manager For VadamOS'
 )
 
 
