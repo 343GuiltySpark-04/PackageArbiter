@@ -2,17 +2,18 @@ from os import system
 
 from termcolor import cprint
 
-from index import load_database
+from database_parser import test_db_loading
 
 
 def clear():
     system('clear')
 
 
-def run_database_load_test(flip_bit):
+def run_database_load_test():
     clear()
 
-    load_database(flip_bit)
+    test_db_loading(1)
+    test_db_loading(2)
 
 
 def dev_tests_menu():
@@ -25,7 +26,7 @@ def dev_tests_menu():
         clear()
         cprint("I SAID DEFUNCT YOU DOLT!", 'red', attrs=['underline'])
     elif user_input == 2:
-        run_database_load_test(1)
+        run_database_load_test()
     elif user_input != 1 or user_input != 2:
         clear()
         dev_tests_menu_handler()

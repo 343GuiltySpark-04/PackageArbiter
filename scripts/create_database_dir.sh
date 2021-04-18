@@ -1,6 +1,6 @@
 #!/bin/bash
 
-db_dir="/usr/local/packageArbiter/db
+db_dir="/usr/local/packageArbiter/db"
 
 sudo mkdir -p $db_dir
 
@@ -8,3 +8,5 @@ sudo mkdir -p $db_dir
 cd $db_dir
 
 sudo touch ./db.yaml
+
+sudo chown root:wheel ./db.yaml

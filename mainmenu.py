@@ -30,27 +30,25 @@ def package_search():
 
 def main_menu():
     cprint("Welcome to PackageArbiter, Please Select an Operation.", 'blue')
-    cprint("1) Edit Configuration. (DEFUNCT!)", 'yellow')
-    cprint("2) Dev Tests Menu.", 'yellow')
-    cprint("3) Hostage (Package) Search.", 'yellow')
+    cprint("1) Dev Tests Menu.", 'yellow')
+    cprint("2) Hostage (Package) Search.", 'yellow')
     cprint("0) Exit.", 'red')
+
+    """Main Menu"""
 
     user_input = int(input("#>"))
 
     if user_input == 1:
         clear()
-        cprint("I SAID DEFUNCT YOU IDIOT!", 'red', attrs=['underline'])
-    elif user_input == 2:
-        clear()
         dev_tests_menu_handler()
-    elif user_input == 3:
+    elif user_input == 2:
         clear()
         package_search()
     elif user_input == 0:
         clear()
         cprint("Goodbye!", 'cyan')
         exit()
-    elif user_input != 0 or user_input != 1 or user_input != 2:
+    elif user_input > 2:
         main_menu_handler()
 
 
