@@ -28,5 +28,11 @@ def run_setup_scripts():
 
     cprint("Done!", 'yellow')
 
+    cprint("Performing First Permissions Pass....", 'yellow')
+
+    call("./scripts/set_dir_perms.sh")
+
+    cprint("Done!", 'yellow')
+
 
 run_setup_scripts()
