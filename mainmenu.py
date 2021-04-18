@@ -47,12 +47,11 @@ def package_search():
 
 
 def main_menu():
+    """Main Menu"""
     cprint("Welcome to PackageArbiter, Please Select an Operation.", 'blue')
     cprint("1) Dev Tests Menu.", 'yellow')
     cprint("2) Hostage (Package) Search.", 'yellow')
     cprint("0) Exit.", 'red')
-
-    """Main Menu"""
 
     user_input = int(input("#>"))
 
