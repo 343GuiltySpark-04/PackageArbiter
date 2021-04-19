@@ -5,7 +5,6 @@ from termcolor import cprint
 
 from cache_parser import parser_cache
 from database_parser import parser
-from main import start_menu
 
 scripts_path = "/usr/local/packageArbiter/scripts/"
 
@@ -56,6 +55,7 @@ def ask_again_uninstall(package_name, flip_bit):
 
 
 def install(package_name):
+    from main import start_menu
     ask_bit = 0
 
     try:
@@ -93,6 +93,7 @@ def install(package_name):
 
 
 def uninstall(package_name):
+    from main import start_menu
     ask_bit = 0
 
     try:
