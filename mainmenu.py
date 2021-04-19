@@ -1,9 +1,11 @@
 from os import system
+from subprocess import getoutput
 
 from termcolor import cprint
 
 from cache_parser import parser_cache
 from database_parser import parser
+from package_handler import install, uninstall
 
 
 def clear():
@@ -45,10 +47,52 @@ def package_search():
         main_menu_handler()
 
 
+def install_menu():
+    cprint("What Package Do You Want Installed?", 'cyan')
+
+    user_input = input("#>")
+
+    if user_input != parser(user_input, 1):
+        cprint(
+            "ERROR: No Such Package In The Database! (you can request a package to be made PackageArbiter compatible at https://github.com/343GuiltySpark-04/PackageArbiter/issues)",
+            'red', attrs=['underline'])
+        main_menu_handler()
+
+    which_cmd = 'which ' + parser(user_input, 8)
+
+    if getoutput(which_cmd) == parser(user_input, 7):
+        cprint("Package Already Installed Aborting!", 'yellow', attrs=['underline'])
+        main_menu_handler()
+    else:
+        install(user_input)
+
+
+def uninstall_menu():
+    cprint("What Package Do You Want Uninstalled?", 'cyan')
+
+    user_input = input("#>")
+
+    if user_input != parser(user_input, 1):
+        cprint(
+            "ERROR: No Such Package In The Database! (you can request a package to be made PackageArbiter compatible at https://github.com/343GuiltySpark-04/PackageArbiter/issues)",
+            'red', attrs=['underline'])
+        main_menu_handler()
+
+    which_cmd = 'which ' + parser(user_input, 8)
+
+    if getoutput(which_cmd) != parser(user_input, 7):
+        cprint("Package Not Installed Aborting!", 'yellow', attrs=['underline'])
+        main_menu_handler()
+    else:
+        uninstall(user_input)
+
+
 def main_menu():
     """Main Menu (self explanatory)"""
     cprint("Welcome to PackageArbiter, Please Select an Operation.", 'blue')
     cprint("1) Hostage (Package) Search.", 'yellow')
+    cprint("2) Install a Package.", 'yellow')
+    cprint("3) Uninstall a Package.", 'yellow')
     cprint("0) Exit.", 'red')
 
     user_input = int(input("#>"))
@@ -56,6 +100,12 @@ def main_menu():
     if user_input == 1:
         clear()
         package_search()
+    elif user_input == 2:
+        clear()
+        install_menu()
+    elif user_input == 3:
+        clear()
+        uninstall_menu()
     elif user_input == 0:
         clear()
         cprint("Goodbye!", 'cyan')
