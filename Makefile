@@ -6,5 +6,5 @@ make doxygen:
 		doxygen ./docs/Doxyfile
 
 make test:
-		python3 -m unittests ./tests/unit_tests.py
+		python3 -m unittest ./tests/unit_tests.py
 
