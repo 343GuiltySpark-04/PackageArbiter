@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #DO NOT RUN DIRECTLY USE THE BLOODY MAKEFILE
 
 dest_dir="/usr/local/packageArbiter/bin"
