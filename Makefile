@@ -1,6 +1,6 @@
 
 install:
-		python3 ./setup_scripts.py
+		python3 ./setup.py
 
 make docs:
 		docs ./docs/Doxyfile

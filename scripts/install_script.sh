@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #DO NOT RUN DIRECTLY USE THE BLOODY MAKEFILE
 
 dest_dir="/usr/local/packageArbiter/bin"
@@ -20,3 +19,5 @@ sudo chmod +x $dest_dir/run.sh
 sudo chmod -R g+w /usr/local/packageArbiter/scripts
 
 sudo chmod -R +x /usr/local/packageArbiter/scripts
+
+ln -s /usr/local/packageArbiter/bin/run.sh /usr/bin/packageArbiter
