@@ -1,6 +1,6 @@
 
 package-arbiter:
-		python3 ./setup.py
+		python3 ./setup_scripts.py
 
 make doxygen:
 		doxygen ./docs/Doxyfile
