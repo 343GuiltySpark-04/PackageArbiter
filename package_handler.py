@@ -9,7 +9,17 @@ from database_parser import parser
 scripts_path = "/usr/local/packageArbiter/scripts/"
 
 
+def call_main_menu():
+    """Calls the Main Menu this way to avoid circular import errors"""
+
+    from mainmenu import main_menu_handler
+
+    main_menu_handler()
+
+
 def check_for_package(package_name):
+    """Currently non-Functional"""
+
     check_bit = parser_cache(package_name, 2)
 
     if check_bit == 1:
@@ -19,6 +29,8 @@ def check_for_package(package_name):
 
 
 def clear():
+    """Does what it says on the tin"""
+
     system('clear')
 
 
@@ -44,7 +56,7 @@ def ask_again_uninstall(package_name, flip_bit):
     if flip_bit == 1:
         cprint("YOU NEED TO ENTER y OR n YOU DOLT!", 'red', attr=['underline'])
 
-    cprint("Are You Sure You Want To Uninstall " + package_name + "? [y/n], 'yellow", attrs=['underline'])
+    cprint("Are You Sure You Want To Uninstall " + package_name + "? [y/n]", 'yellow', attrs=['underline'])
 
     user_input = input("#>")
 
@@ -55,7 +67,8 @@ def ask_again_uninstall(package_name, flip_bit):
 
 
 def install(package_name):
-    from main import start_menu
+    """installs a package"""
+
     ask_bit = 0
 
     try:
@@ -67,7 +80,7 @@ def install(package_name):
         clear()
     elif ask_bit == 2:
         cprint("ABORTING INSTALL!", 'red', attrs=['underline'])
-        start_menu()
+        call_main_menu()
 
     install_script_path = scripts_path + parser(package_name, 5)
 
@@ -75,10 +88,12 @@ def install(package_name):
 
     cprint("Installing " + package_name + " Please Standby....", 'yellow')
 
-    if check_for_package(package_name) == 2:
-        cprint("ERROR: Package Not Found In Cache Please Make Sure To Place It In The Cache Directory!", 'red',
-               attrs=['underline'])
-        start_menu()
+    # if check_for_package(package_name) == 2:
+    #     cprint("ERROR: Package Not Found In Cache Please Make Sure To Place It In The Cache Directory!", 'red',
+    #            attrs=['underline'])
+    #     call_main_menu()
+
+    # ^ currently not working right
 
     subprocess.call(install_script_path)
 
@@ -89,11 +104,12 @@ def install(package_name):
             "INSTALLATION FAILED PLEASE NOTIFY THE THE DEVS BY SUBMITTING A ISSUE AT https://github.com/343GuiltySpark-04/PackageArbiter/issues",
             'red', attrs=['bold', 'underline'])
 
-    start_menu()
+    call_main_menu()
 
 
 def uninstall(package_name):
-    from main import start_menu
+    """uninstalls a package"""
+
     ask_bit = 0
 
     try:
@@ -121,4 +137,4 @@ def uninstall(package_name):
     else:
         cprint("Uninstallation Successful!", 'cyan', attrs=['underline'])
 
-    start_menu()
+    call_main_menu()

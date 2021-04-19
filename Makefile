@@ -1,10 +1,10 @@
 
-package-arbiter:
+install:
 		python3 ./setup_scripts.py
 
-make doxygen:
-		doxygen ./docs/Doxyfile
+make docs:
+		docs ./docs/Doxyfile
 
 make test:
-		python3 -m unittests ./tests/unit_tests.py
+		python3 -m unittest ./tests/unit_tests.py
 

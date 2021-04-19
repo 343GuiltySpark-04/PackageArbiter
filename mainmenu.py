@@ -48,6 +48,8 @@ def package_search():
 
 
 def install_menu():
+    """asks what package to install the makes sure its not already installed then calls the package handler"""
+
     cprint("What Package Do You Want Installed?", 'cyan')
 
     user_input = input("#>")
@@ -56,7 +58,7 @@ def install_menu():
         cprint(
             "ERROR: No Such Package In The Database! (you can request a package to be made PackageArbiter compatible at https://github.com/343GuiltySpark-04/PackageArbiter/issues)",
             'red', attrs=['underline'])
-        main_menu_handler()
+    # main_menu_handler()
 
     which_cmd = 'which ' + parser(user_input, 8)
 
@@ -68,6 +70,8 @@ def install_menu():
 
 
 def uninstall_menu():
+    """asks what package to uninstall then makes sure its installed then calls the package handler"""
+
     cprint("What Package Do You Want Uninstalled?", 'cyan')
 
     user_input = input("#>")

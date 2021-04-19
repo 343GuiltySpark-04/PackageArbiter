@@ -19,6 +19,8 @@ def parser_cache(package_name, flip_bit):
 
     cross_ref_cache_name = parser(package_name, 9)
 
+    print(cross_ref_cache_name)
+
     if cross_ref_name != package_name and flip_bit == 1:
         return "ERROR: NO SUCH HOSTAGE (PACKAGE) ON FILE!"
     elif cross_ref_name != package_name and flip_bit == 2:
@@ -44,6 +46,9 @@ def parser_cache(package_name, flip_bit):
             break
         else:
             continue
+
+    print(return_name)
+
     if flip_bit == 1 and cross_ref_cache_name == return_name:
         return return_name
     elif flip_bit == 2 and cross_ref_cache_name == return_name:
