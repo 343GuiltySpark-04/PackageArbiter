@@ -34,41 +34,6 @@ def clear():
     system('clear')
 
 
-def dep_check(package_name):
-    dep_list = parser(package_name, 10)
-
-    which_cmd = ''
-
-    final_bit = 0
-
-    check = ''
-
-    index = 0
-
-    which_out = ""
-
-    index_max = len(dep_list)
-
-    for _ in dep_list:
-
-        if dep_list[index] == 'none':
-            return 3
-
-        which_cmd = 'which ' + parser(dep_list[index], 8)
-
-        check = parser(dep_list[index], 7)
-
-        which_out = subprocess.getoutput(which_cmd)
-
-        if which_out == check and index == index_max:
-            return 1
-        elif which_out != check:
-            return 2
-        else:
-            index += 1
-            continue
-
-
 def ask_again_install(package_name, flip_bit):
     clear()
 
@@ -173,6 +138,3 @@ def uninstall(package_name):
         cprint("Uninstallation Successful!", 'cyan', attrs=['underline'])
 
     call_main_menu()
-
-
-dep_check("yasm")
