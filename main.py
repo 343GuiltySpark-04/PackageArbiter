@@ -10,7 +10,7 @@ def check_if_posix():
 
     if name != 'posix':
         cprint("WHY THE FUCK ARE YOU RUNNING THIS ON A NON POSIX SYSTEM?", 'red', attrs=['underline', 'bold'])
-        exit("UNABLE TO FREE HOSTAGES REASON: NON-POSIX SYSTEM DETECTED!")
+        exit("UNABLE TO START PACKAGEARBITER REASON: NON-POSIX SYSTEM DETECTED!")
 
 
 def clear():
