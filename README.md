@@ -12,4 +12,4 @@ To install untar the archive and run `make install` if running as root or `sudo 
 
 also grab the Data package from 
 https://github.com/343GuiltySpark-04/PackageArbiter-Data
-unless you intend on using the program as a API
+unless you intend on using the program as an API
