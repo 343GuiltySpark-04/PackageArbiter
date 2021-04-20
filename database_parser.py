@@ -23,14 +23,16 @@ def parser(package_name, return_bit):
     key_data_check = ""
     key_data_bin_name = ''
     key_data_cache_name = ""
+    key_data_deps = None
+    key_data_opt_deps = None
 
     count = 0
 
     path = ""
     """A switch so it doesn't use the default path for unit tests"""
-    if return_bit != 10:
+    if return_bit != 12:
         path = db_file_path
-    elif return_bit == 10:
+    elif return_bit == 12:
         path = '../tests/test.yaml'
 
     stream = open(path)
@@ -63,6 +65,10 @@ def parser(package_name, return_bit):
                 key_data_bin_name = v
             elif dict_count == 7:
                 key_data_cache_name = v
+            elif dict_count == 8:
+                key_data_deps = v
+            elif dict_count == 9:
+                key_data_opt_deps = v
 
             dict_count += 1
         count += 1
@@ -76,7 +82,7 @@ def parser(package_name, return_bit):
 
     stream.close()
 
-    if return_bit == 1 or return_bit == 10:
+    if return_bit == 1 or return_bit == 12:
         return key_data_name
     elif return_bit == 2:
         return key_data_version
@@ -95,3 +101,7 @@ def parser(package_name, return_bit):
         return key_data_bin_name
     elif return_bit == 9:
         return key_data_cache_name
+    elif return_bit == 10:
+        return key_data_deps
+    elif return_bit == 11:
+        return key_data_opt_deps

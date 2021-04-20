@@ -5,7 +5,7 @@ from termcolor import cprint
 
 from cache_parser import parser_cache
 from database_parser import parser
-from package_handler import install, uninstall
+from package_handler import install, uninstall, dep_check
 
 
 def clear():
@@ -16,7 +16,7 @@ def package_search():
     """Searches for a package in the db.yaml (using database_parser.py file then checks for its presence in the Cache
         Directory (using cache_parser.py)"""
 
-    cprint("So who are we looking for?", 'cyan')
+    cprint("So what are we looking for?", 'cyan')
 
     user_input = input("#>")
 
@@ -34,16 +34,16 @@ def package_search():
         cprint(out_config_dir, 'yellow')
     elif exists_in_db != user_input:
         clear()
-        cprint("Sorry Hostage Rescue Failed (Package Not Found in Database)", 'red', attrs=['underline'])
+        cprint("Sorry Package Search Failed (Package Not Found in Database)", 'red', attrs=['underline'])
         main_menu_handler()
 
     cprint("Making Sure It's Present in The Cache....", 'cyan')
 
     if exists_in_cache == 1:
-        cprint("Hostage (Package) Located!", 'yellow')
+        cprint("Package Located!", 'yellow')
         main_menu_handler()
     elif exists_in_cache != 2:
-        cprint("Sorry Hostage Rescue Failed (Package Not Found in Cache)", 'red', attrs=['underline'])
+        cprint("Sorry Package Search Failed (Package Not Found in Cache)", 'red', attrs=['underline'])
         main_menu_handler()
 
 
@@ -64,6 +64,10 @@ def install_menu():
 
     if getoutput(which_cmd) == parser(user_input, 7):
         cprint("Package Already Installed Aborting!", 'yellow', attrs=['underline'])
+        main_menu_handler()
+    elif dep_check(
+            user_input) == 2:  # MARTIN OR VICTOR PLEASE DEBUG THIS STATEMENT AS ITS NOT WORKING WHEN THE RETURN IS 2
+        print("test")
         main_menu_handler()
     else:
         install(user_input)
@@ -94,7 +98,7 @@ def uninstall_menu():
 def main_menu():
     """Main Menu (self explanatory)"""
     cprint("Welcome to PackageArbiter, Please Select an Operation.", 'blue')
-    cprint("1) Hostage (Package) Search.", 'yellow')
+    cprint("1) Package Search.", 'yellow')
     cprint("2) Install a Package.", 'yellow')
     cprint("3) Uninstall a Package.", 'yellow')
     cprint("0) Exit.", 'red')
