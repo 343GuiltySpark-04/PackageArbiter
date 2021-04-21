@@ -23,7 +23,7 @@ class DatabaseParserTests(unittest.TestCase):
         subprocess.call('../scripts/database_parser_test_setup.sh')
 
     def test_database_parser(self):
-        self.assertEqual(database_parser.parser("foolib", 10), "foolib",
+        self.assertEqual(database_parser.parser("foolib", 12), "foolib",
                          cprint("Database Parser Test Complete", 'yellow', attrs=['underline']))
 
     def tearDown(self):

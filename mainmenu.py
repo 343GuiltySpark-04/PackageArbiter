@@ -5,6 +5,7 @@ from termcolor import cprint
 
 from cache_parser import parser_cache
 from database_parser import parser
+from dep_handler import dep_list_menu
 from package_handler import install, uninstall
 
 
@@ -65,7 +66,7 @@ def install_menu():
     if getoutput(which_cmd) == parser(user_input, 7):
         cprint("Package Already Installed Aborting!", 'yellow', attrs=['underline'])
         main_menu_handler()
-    else:
+    elif getoutput(which_cmd) != parser(user_input, 7):
         install(user_input)
 
 
@@ -91,12 +92,21 @@ def uninstall_menu():
         uninstall(user_input)
 
 
+def dep_lister_menu_handler():
+    try:
+        dep_list_menu()
+    except ValueError:
+        cprint("YOU HAVE TO ENTER A NUMBER YOU DOLT!", 'red', attrs=['underline'])
+        dep_lister_menu_handler()
+
+
 def main_menu():
     """Main Menu (self explanatory)"""
-    cprint("Welcome to PackageArbiter, Please Select an Operation.", 'blue')
+    cprint("Welcome to PackageArbiter (V0.1.1), Please Select an Operation.", 'blue')
     cprint("1) Package Search.", 'yellow')
     cprint("2) Install a Package.", 'yellow')
     cprint("3) Uninstall a Package.", 'yellow')
+    cprint("4) Search dependency's.", 'yellow')
     cprint("0) Exit.", 'red')
 
     user_input = int(input("#>"))
@@ -110,11 +120,14 @@ def main_menu():
     elif user_input == 3:
         clear()
         uninstall_menu()
+    elif user_input == 4:
+        clear()
+        dep_lister_menu_handler()
     elif user_input == 0:
         clear()
         cprint("Goodbye!", 'cyan')
         exit()
-    elif user_input > 1:
+    elif user_input > 4:
         main_menu_handler()
 
 
