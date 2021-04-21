@@ -102,7 +102,7 @@ def dep_lister_menu_handler():
 
 def main_menu():
     """Main Menu (self explanatory)"""
-    cprint("Welcome to PackageArbiter, Please Select an Operation.", 'blue')
+    cprint("Welcome to PackageArbiter (V0.1.1), Please Select an Operation.", 'blue')
     cprint("1) Package Search.", 'yellow')
     cprint("2) Install a Package.", 'yellow')
     cprint("3) Uninstall a Package.", 'yellow')
